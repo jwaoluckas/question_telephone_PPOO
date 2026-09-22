@@ -16,5 +16,19 @@ public class Screen {
                 System.out.println("Digitou: " + digit);
             }
         });
+
+        // Observador 2: só fala quando o número completa 11 dígitos
+        model.addDigitObserver(new PhoneModel.PhoneObserver() {
+            @Override
+            public void onDigitAdded(int digit) {
+                if (model.getDigits().size() == 11) {
+                    StringBuilder numero = new StringBuilder();
+                    for (int d : model.getDigits()) {
+                        numero.append(d);
+                    }
+                    System.out.println("Agora discando " + numero + "...");
+                }
+            }
+        });
     }
 }
