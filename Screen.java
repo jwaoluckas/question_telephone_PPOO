@@ -8,5 +8,13 @@ public class Screen {
 
     public Screen(PhoneModel model) {
         this.model = model;
+
+        // Observador 1: ecoa cada dígito assim que ele chega
+        model.addDigitObserver(new PhoneModel.PhoneObserver() {
+            @Override
+            public void onDigitAdded(int digit) {
+                System.out.println("Digitou: " + digit);
+            }
+        });
     }
 }
