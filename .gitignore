@@ -1,0 +1,6 @@
+*.class
+bin/
+.claude/
+.settings/
+.classpath
+.project
