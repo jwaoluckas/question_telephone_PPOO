@@ -7,6 +7,10 @@ import java.util.List;
 public class PhoneModel {
     private List<Integer> digits = new ArrayList<>();
 
+    public interface PhoneObserver {
+        void onDigitAdded(int digit);
+    }
+
     public void addDigit(int newDigit) {
         digits.add(newDigit);
     }
