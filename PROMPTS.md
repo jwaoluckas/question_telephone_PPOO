@@ -116,6 +116,14 @@ professor, e a discagem vira a última linha, com o número completo. A estrutur
 do Observer não mudou: só o que cada observador imprime e o tamanho que o
 segundo observador espera.
 
+### Ajuste 5 — o `KeyPad` sorteia dígitos de 0 a 9
+
+O `KeyPad` do código inicial sorteava com `rnd.nextInt(12)`, então às vezes
+"digitava" 10 ou 11. Um dígito de telefone vai de 0 a 9, e com esses valores o
+"Agora discando" mostrava números como `5344108103810105` (16 caracteres para
+12 teclas). `MAX_DIGIT` passou de 12 para 10; o resto do `KeyPad` continua como
+o professor entregou.
+
 ---
 
 ## Mapa: etapa → commit
@@ -129,3 +137,4 @@ segundo observador espera.
 | Etapa 4 (**Ajustes 2 e 3**) — segundo obs.   | `Screen registra observador que anuncia a discagem aos 11 digitos` |
 | Documentação da solução                      | `adiciona README com explicacao do Observer`                      |
 | **Ajuste 4** — saída igual à do enunciado    | `ajusta a saida da Screen ao exemplo do enunciado`                |
+| **Ajuste 5** — dígitos de 0 a 9              | `KeyPad passa a sortear digitos de 0 a 9`                         |

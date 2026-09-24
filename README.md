@@ -66,5 +66,7 @@ Os dígitos são gerados aleatoriamente pelo `KeyPad`, então cada execução
 produz uma sequência diferente. O anúncio "Agora discando ..." é sempre a
 última linha: aparece quando o 12º dígito é digitado, com o número completo.
 
-O `"Pressing: X"` em inglês e os eventuais "dígitos" 10 e 11 vêm do `KeyPad`
-do código inicial do professor (`rnd.nextInt(12)`).
+O `"Pressing: X"` em inglês vem do `KeyPad` do código inicial do professor.
+O `KeyPad` original sorteava com `rnd.nextInt(12)`, o que gerava "dígitos" 10
+e 11 e deixava o número discado com mais de 12 caracteres; ele passou a sortear
+de 0 a 9 (`MAX_DIGIT = 10`).

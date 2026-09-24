@@ -12,7 +12,7 @@ public class KeyPad {
     }
 
     public void simulateKeyPresses(int numKeyPresses) {
-        final int MAX_DIGIT = 12;
+        final int MAX_DIGIT = 10; // digitos de 0 a 9 (era 12, gerava 10 e 11)
         Random rnd = new Random();
         for (int i = 0; i < numKeyPresses; i++) {
             int newDigit = rnd.nextInt(MAX_DIGIT);
