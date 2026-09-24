@@ -97,6 +97,25 @@ na hora, então o modelo guarda só o dado bruto.
 **Resultado:** o `PhoneModel` não tem nenhum `System.out` e não cita a `Screen`
 em lugar nenhum — as duas restrições do enunciado.
 
+### Ajuste 4 — a saída foi alinhada com o exemplo do enunciado
+
+Conferindo a saída com o exemplo do PDF, apareceram duas diferenças que vinham
+do próprio prompt:
+
+- **12 dígitos, não 11.** O prompt pedia a discagem "quando o número atingir 11
+  dígitos", mas o número do exemplo (`081999887766`) tem 12, e o `Main` aperta
+  12 teclas (`NUM_DIGITS = 12`). Com 11, o "Agora discando" saía antes da última
+  tecla, o número discado ficava sem o último dígito e ainda aparecia um
+  `Pressing` depois da discagem.
+- **Só o dígito.** O enunciado pede que o primeiro observador imprima "o dígito
+  mais recente", e o exemplo mostra o número sozinho na linha. O `"Digitou: "`
+  era um texto a mais que a IA sugeriu para deixar a saída "explicada".
+
+**Por que isso melhora:** a saída passa a ter a mesma forma do exemplo do
+professor, e a discagem vira a última linha, com o número completo. A estrutura
+do Observer não mudou: só o que cada observador imprime e o tamanho que o
+segundo observador espera.
+
 ---
 
 ## Mapa: etapa → commit
@@ -109,3 +128,4 @@ em lugar nenhum — as duas restrições do enunciado.
 | Etapa 4 — primeiro observador                | `Screen registra observador que ecoa cada digito`                 |
 | Etapa 4 (**Ajustes 2 e 3**) — segundo obs.   | `Screen registra observador que anuncia a discagem aos 11 digitos` |
 | Documentação da solução                      | `adiciona README com explicacao do Observer`                      |
+| **Ajuste 4** — saída igual à do enunciado    | `ajusta a saida da Screen ao exemplo do enunciado`                |

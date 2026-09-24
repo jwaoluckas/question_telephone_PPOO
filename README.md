@@ -5,7 +5,7 @@
 O `KeyPad` simula a digitação de um número de telefone, dígito por dígito,
 chamando `PhoneModel.addDigit(int)`. A `Screen` precisa reagir a cada dígito
 digitado (para ecoar na tela) e também precisa saber quando o número atingiu
-11 dígitos (para anunciar que a ligação está sendo discada), sem que o
+12 dígitos (para anunciar que a ligação está sendo discada), sem que o
 `PhoneModel` precise conhecer a `Screen` nem saber o que fazer com a tela.
 
 O padrão Observer resolve isso: o `PhoneModel` apenas avisa "um dígito foi
@@ -20,9 +20,9 @@ fazer com essa informação.
 - **Observer**: a interface `PhoneModel.PhoneObserver` (aninhada no próprio
   Subject, para o `PhoneModel` não depender de `Screen`). A `Screen` registra
   duas implementações anônimas dela no seu construtor:
-  1. uma que imprime `"Digitou: X"` a cada dígito;
-  2. uma que consulta `model.getDigits()` e, quando o tamanho chega a 11,
-     imprime `"Agora discando XXXXXXXXXXX..."`.
+  1. uma que imprime o dígito mais recente, sozinho na linha;
+  2. uma que consulta `model.getDigits()` e, quando o tamanho chega a 12,
+     imprime `"Agora discando XXXXXXXXXXXX..."`.
 
 ## Como compilar e rodar
 
@@ -35,33 +35,36 @@ java Main
 ## Saída de exemplo
 
 ```
-Pressing: 4
-Digitou: 4
-Pressing: 6
-Digitou: 6
-Pressing: 3
-Digitou: 3
-Pressing: 6
-Digitou: 6
-Pressing: 6
-Digitou: 6
-Pressing: 2
-Digitou: 2
-Pressing: 3
-Digitou: 3
 Pressing: 0
-Digitou: 0
-Pressing: 0
-Digitou: 0
-Pressing: 11
-Digitou: 11
-Pressing: 2
-Digitou: 2
-Agora discando 463662300112...
-Pressing: 4
-Digitou: 4
+0
+Pressing: 8
+8
+Pressing: 1
+1
+Pressing: 9
+9
+Pressing: 9
+9
+Pressing: 9
+9
+Pressing: 8
+8
+Pressing: 8
+8
+Pressing: 7
+7
+Pressing: 7
+7
+Pressing: 6
+6
+Pressing: 6
+6
+Agora discando 081999887766...
 ```
 
-(os dígitos são gerados aleatoriamente pelo `KeyPad`, então cada execução
-produz uma sequência diferente; o anúncio "Agora discando ..." sempre
-aparece assim que o 11º dígito é digitado).
+Os dígitos são gerados aleatoriamente pelo `KeyPad`, então cada execução
+produz uma sequência diferente. O anúncio "Agora discando ..." é sempre a
+última linha: aparece quando o 12º dígito é digitado, com o número completo.
+
+O `"Pressing: X"` em inglês e os eventuais "dígitos" 10 e 11 vêm do `KeyPad`
+do código inicial do professor (`rnd.nextInt(12)`).
